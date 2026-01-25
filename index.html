@@ -3,372 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
-        }
-
-        .nav {
-            background-color: #111827;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav h1 {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-            color: #60a5fa;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .hero h2 {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #4b5563;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .skill-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-name {
-            font-weight: 600;
-            color: #1f2937;
-        }
-
-        .skill-level {
-            color: #4b5563;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background-color: #e5e7eb;
-            border-radius: 9999px;
-            height: 0.75rem;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            background-color: #2563eb;
-            height: 100%;
-            border-radius: 9999px;
-            transition: width 1s ease-out;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .main-card {
-            background: linear-gradient(to bottom right, #2563eb, #1d4ed8);
-            color: white;
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .main-card.green {
-            background: linear-gradient(to bottom right, #059669, #047857);
-        }
-
-        .main-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            font-size: 2.5rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-description {
-            opacity: 0.9;
-        }
-
-        .card-count {
-            font-size: 2rem;
-            font-weight: bold;
-            margin-top: 1rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-icon {
-            font-size: 4rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-desc {
-            color: #4b5563;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            padding: 0.25rem 0.75rem;
-            background-color: #dbeafe;
-            color: #1e40af;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-        }
-
-        .back-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #2563eb;
-            text-decoration: none;
-            margin-bottom: 2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .back-button:hover {
-            color: #1d4ed8;
-        }
-
-        .project-detail {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-        }
-
-        .project-detail-icon {
-            font-size: 5rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-detail-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-
-        .detail-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .detail-item h3 {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-        }
-
-        .detail-item p {
-            color: #4b5563;
-        }
-
-        .detail-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .detail-section h3 {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-tags-large {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag-large {
-            padding: 0.5rem 1rem;
-            background-color: #2563eb;
-            color: white;
-            border-radius: 0.5rem;
-        }
-
-        .contact-card {
-            background: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-        }
-
-        .contact-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .contact-item:last-child {
-            border-bottom: none;
-        }
-
-        .contact-item h3 {
-            font-weight: 600;
-            color: #374151;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .contact-item a:hover {
-            color: #1d4ed8;
-        }
-
-        .progress-section {
-            margin-top: 1.5rem;
-        }
-
-        .progress-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            color: #4b5563;
-            margin-bottom: 0.25rem;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Marco Bosson - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -380,7 +16,6 @@
                     <span>Accueil</span>
                 </a>
                 <a class="nav-link" onclick="showPage('contact')">
-                    <span>✉️</span>
                     <span>Contact</span>
                 </a>
             </div>
@@ -390,31 +25,41 @@
     <!-- Page d'accueil -->
     <div id="home-page" class="container">
         <div class="hero">
-            <h2>Bienvenue</h2>
+            <h2>Bienvenue sur mon Portfolio</h2>
             <p>Découvrez mes réalisations et compétences</p>
         </div>
 
-        <h3 class="section-title">Mes Compétences</h3>
+        <!-- Présentation Personnelle -->
+        <div class="presentation">
+            <h3>À propos de moi</h3>
+            <p>
+                Passionné par la technologie et l'innovation, je développe des solutions créatives 
+                alliant conception, développement et fabrication. Mon expertise s'étend de la CAO/DAO 
+                à l'impression 3D, en passant par le développement web et la création de visuels. 
+                Toujours en quête de nouveaux défis, j'aime transformer des idées en projets concrets 
+                et fonctionnels.
+            </p>
+        </div>
+
+        <h3 class="section-title">Mes compétences</h3>
         <div class="skills-grid" id="skills-container"></div>
 
         <div class="cards-grid">
             <div class="main-card" onclick="showPage('completed')">
-                <div class="card-header">
-                    <div class="card-icon">💼</div>
-                    <div style="font-size: 2rem;">➜</div>
-                </div>
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop" 
+                     alt="Projets terminés" 
+                     class="main-card-image"
+                     onerror="this.style.display='none'">
                 <div class="card-title">Projets Terminés</div>
-                <div class="card-description">Découvrez mes réalisations passées</div>
                 <div class="card-count" id="completed-count">0</div>
             </div>
 
             <div class="main-card green" onclick="showPage('ongoing')">
-                <div class="card-header">
-                    <div class="card-icon">⏱️</div>
-                    <div style="font-size: 2rem;">➜</div>
-                </div>
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop" 
+                     alt="Projets en cours" 
+                     class="main-card-image"
+                     onerror="this.style.display='none'">
                 <div class="card-title">Projets En Cours</div>
-                <div class="card-description">Mes projets actuels en développement</div>
                 <div class="card-count" id="ongoing-count">0</div>
             </div>
         </div>
@@ -455,218 +100,38 @@
             <span>←</span>
             <span>Retour à l'accueil</span>
         </a>
-        <h2 class="section-title">Me Contacter</h2>
+        <h2 class="section-title">Contactez-moi</h2>
         <div class="contact-card">
-            <div class="contact-item">
-                <h3>Email</h3>
-                <a href="mailto:votre.email@example.com">votre.email@example.com</a>
+            <div class="contact-header">
+                <h3>Restons en contact</h3>
             </div>
             <div class="contact-item">
-                <h3>Téléphone</h3>
-                <a href="tel:+33612345678">+33 6 12 34 56 78</a>
+                <div class="contact-info">
+                    <h3>Email</h3>
+                    <a href="mailto:marcobosson@mailo.com">marcobosson@mailo.com</a>
+                </div>
             </div>
             <div class="contact-item">
-                <h3>LinkedIn</h3>
-                <a href="https://linkedin.com/in/votre-profil" target="_blank">linkedin.com/in/votre-profil</a>
+                <div class="contact-info">
+                    <h3>Téléphone</h3>
+                    <a href="tel:+33644290007">+33 6 44 29 00 07</a>
+                </div>
             </div>
             <div class="contact-item">
-                <h3>GitHub</h3>
-                <a href="https://github.com/votre-profil" target="_blank">github.com/votre-profil</a>
+                <div class="contact-info">
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/marco-bosson-1605b9394" target="_blank">linkedin.com/in/marco-bosson-1605b9394</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-info">
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/BOSSONMarco" target="_blank">github.com/BOSSONMarco</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Données - À personnaliser
-        const skills = [
-            { name: 'JavaScript/React', level: 85 },
-            { name: 'Python', level: 75 },
-            { name: 'HTML/CSS', level: 90 },
-            { name: 'Node.js', level: 70 },
-            { name: 'SQL', level: 65 },
-            { name: 'Git', level: 80 }
-        ];
-
-        const completedProjects = [
-            {
-                id: 1,
-                title: 'Application E-commerce',
-                description: 'Plateforme de vente en ligne complète',
-                image: '🛒',
-                technologies: ['React', 'Node.js', 'MongoDB'],
-                details: 'Développement d\'une application e-commerce avec gestion des utilisateurs, panier d\'achat et système de paiement sécurisé.',
-                duration: '3 mois',
-                role: 'Développeur Full-Stack'
-            },
-            {
-                id: 2,
-                title: 'Dashboard Analytics',
-                description: 'Tableau de bord de visualisation de données',
-                image: '📊',
-                technologies: ['React', 'D3.js', 'API REST'],
-                details: 'Création d\'un dashboard interactif pour visualiser des données complexes en temps réel.',
-                duration: '2 mois',
-                role: 'Développeur Front-End'
-            }
-        ];
-
-        const ongoingProjects = [
-            {
-                id: 3,
-                title: 'Application Mobile Fitness',
-                description: 'App de suivi d\'entraînement',
-                image: '💪',
-                technologies: ['React Native', 'Firebase'],
-                details: 'Développement d\'une application mobile pour suivre ses entraînements et progrès sportifs.',
-                duration: 'En cours depuis 1 mois',
-                role: 'Développeur Mobile',
-                progress: 60
-            }
-        ];
-
-        let currentProjectType = '';
-
-        // Initialisation
-        function init() {
-            renderSkills();
-            renderProjects();
-            document.getElementById('completed-count').textContent = completedProjects.length;
-            document.getElementById('ongoing-count').textContent = ongoingProjects.length;
-        }
-
-        // Afficher les compétences
-        function renderSkills() {
-            const container = document.getElementById('skills-container');
-            container.innerHTML = skills.map(skill => `
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <span class="skill-name">${skill.name}</span>
-                        <span class="skill-level">${skill.level}%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: ${skill.level}%"></div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Afficher les projets
-        function renderProjects() {
-            const completedContainer = document.getElementById('completed-projects');
-            completedContainer.innerHTML = completedProjects.map(project => `
-                <div class="project-card" onclick="showProjectDetail(${project.id}, 'completed')">
-                    <div class="project-content">
-                        <div class="project-icon">${project.image}</div>
-                        <div class="project-title">${project.title}</div>
-                        <div class="project-desc">${project.description}</div>
-                        <div class="tech-tags">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-
-            const ongoingContainer = document.getElementById('ongoing-projects');
-            ongoingContainer.innerHTML = ongoingProjects.map(project => `
-                <div class="project-card" onclick="showProjectDetail(${project.id}, 'ongoing')">
-                    <div class="project-content">
-                        <div class="project-icon">${project.image}</div>
-                        <div class="project-title">${project.title}</div>
-                        <div class="project-desc">${project.description}</div>
-                        ${project.progress ? `
-                            <div class="progress-section">
-                                <div class="progress-header">
-                                    <span>Progression</span>
-                                    <span>${project.progress}%</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: ${project.progress}%"></div>
-                                </div>
-                            </div>
-                        ` : ''}
-                        <div class="tech-tags">
-                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Navigation entre pages
-        function showPage(page) {
-            document.getElementById('home-page').classList.add('hidden');
-            document.getElementById('completed-page').classList.add('hidden');
-            document.getElementById('ongoing-page').classList.add('hidden');
-            document.getElementById('contact-page').classList.add('hidden');
-            document.getElementById('project-detail-page').classList.add('hidden');
-
-            document.getElementById(page + '-page').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        // Afficher détail projet
-        function showProjectDetail(id, type) {
-            currentProjectType = type;
-            const projects = type === 'completed' ? completedProjects : ongoingProjects;
-            const project = projects.find(p => p.id === id);
-
-            if (!project) return;
-
-            const detailContainer = document.getElementById('project-detail-content');
-            detailContainer.innerHTML = `
-                <div class="project-detail-icon">${project.image}</div>
-                <h2 class="project-detail-title">${project.title}</h2>
-                
-                <div class="detail-grid">
-                    <div class="detail-item">
-                        <h3>Durée</h3>
-                        <p>${project.duration}</p>
-                    </div>
-                    <div class="detail-item">
-                        <h3>Rôle</h3>
-                        <p>${project.role}</p>
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3>Technologies utilisées</h3>
-                    <div class="tech-tags-large">
-                        ${project.technologies.map(tech => `<span class="tech-tag-large">${tech}</span>`).join('')}
-                    </div>
-                </div>
-
-                <div class="detail-section">
-                    <h3>Description détaillée</h3>
-                    <p style="color: #4b5563; line-height: 1.6;">${project.details}</p>
-                </div>
-
-                ${project.progress ? `
-                    <div class="detail-section">
-                        <h3>Progression</h3>
-                        <div class="progress-bar" style="height: 1rem;">
-                            <div class="progress-fill" style="width: ${project.progress}%; background-color: #059669; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.5rem;">
-                                <span style="color: white; font-size: 0.75rem; font-weight: bold;">${project.progress}%</span>
-                            </div>
-                        </div>
-                    </div>
-                ` : ''}
-            `;
-
-            document.getElementById('home-page').classList.add('hidden');
-            document.getElementById('completed-page').classList.add('hidden');
-            document.getElementById('ongoing-page').classList.add('hidden');
-            document.getElementById('contact-page').classList.add('hidden');
-            document.getElementById('project-detail-page').classList.remove('hidden');
-            window.scrollTo(0, 0);
-        }
-
-        // Retour aux projets
-        function backToProjects() {
-            showPage(currentProjectType);
-        }
-
-        // Lancer l'initialisation
-        init();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
