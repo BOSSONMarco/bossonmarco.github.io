@@ -5,8 +5,8 @@ const skills = [
     { name: 'Python', level: 55 },
     { name: 'HTML/CSS', level: 75 },
     { name: 'Git', level: 60 },
-    { name: 'CAO/DAO', level: 85 },
-    { name: 'Visuels et Animations', level: 75 },
+    { name: 'CAO/DAO', level: 80 },
+    { name: 'Visuels et Animations', level: 70 },
     { name: 'Impression 3D', level: 65 }
 ];
 
@@ -86,6 +86,14 @@ const ongoingProjects = [
 ];
 
 let currentProjectType = '';
+let carouselIntervals = {
+    completed: null,
+    ongoing: null
+};
+let carouselIndexes = {
+    completed: 0,
+    ongoing: 0
+};
 
 // ============================================
 // INITIALISATION
@@ -94,6 +102,111 @@ function init() {
     renderSkills();
     renderProjects();
     updateProjectCounts();
+    initCarousels();
+}
+
+// ============================================
+// INITIALISATION DES CARROUSELS
+// ============================================
+function initCarousels() {
+    // Carrousel pour projets terminés
+    const completedCarousel = document.getElementById('completed-carousel');
+    if (completedCarousel && completedProjects.length > 0) {
+        completedCarousel.innerHTML = completedProjects.map((project, index) => `
+            <img src="${project.image}" 
+                 alt="${project.title}" 
+                 class="main-card-image ${index === 0 ? 'active' : ''}"
+                 onerror="this.style.display='none'">
+        `).join('') + `
+            <div class="main-card-carousel-dots">
+                ${completedProjects.map((_, index) => `
+                    <div class="carousel-dot ${index === 0 ? 'active' : ''}"></div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // Carrousel pour projets en cours
+    const ongoingCarousel = document.getElementById('ongoing-carousel');
+    if (ongoingCarousel && ongoingProjects.length > 0) {
+        ongoingCarousel.innerHTML = ongoingProjects.map((project, index) => `
+            <img src="${project.image}" 
+                 alt="${project.title}" 
+                 class="main-card-image ${index === 0 ? 'active' : ''}"
+                 onerror="this.style.display='none'">
+        `).join('') + `
+            <div class="main-card-carousel-dots">
+                ${ongoingProjects.map((_, index) => `
+                    <div class="carousel-dot ${index === 0 ? 'active' : ''}"></div>
+                `).join('')}
+            </div>
+        `;
+    }
+}
+
+// ============================================
+// DÉMARRAGE DU CARROUSEL
+// ============================================
+function startCarousel(type) {
+    // Réinitialiser l'index
+    carouselIndexes[type] = 0;
+    
+    // Nettoyer l'intervalle existant
+    if (carouselIntervals[type]) {
+        clearInterval(carouselIntervals[type]);
+    }
+
+    const projects = type === 'completed' ? completedProjects : ongoingProjects;
+    if (projects.length <= 1) return; // Pas besoin de carrousel si un seul projet
+
+    // Démarrer le défilement automatique
+    carouselIntervals[type] = setInterval(() => {
+        carouselIndexes[type] = (carouselIndexes[type] + 1) % projects.length;
+        updateCarousel(type);
+    }, 1500); // Change d'image toutes les 1.5 secondes
+}
+
+// ============================================
+// ARRÊT DU CARROUSEL
+// ============================================
+function stopCarousel(type) {
+    if (carouselIntervals[type]) {
+        clearInterval(carouselIntervals[type]);
+        carouselIntervals[type] = null;
+    }
+    // Revenir à la première image
+    carouselIndexes[type] = 0;
+    updateCarousel(type);
+}
+
+// ============================================
+// MISE À JOUR DU CARROUSEL
+// ============================================
+function updateCarousel(type) {
+    const carousel = document.getElementById(type + '-carousel');
+    if (!carousel) return;
+
+    const images = carousel.querySelectorAll('.main-card-image');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    const currentIndex = carouselIndexes[type];
+
+    // Mettre à jour les images
+    images.forEach((img, index) => {
+        if (index === currentIndex) {
+            img.classList.add('active');
+        } else {
+            img.classList.remove('active');
+        }
+    });
+
+    // Mettre à jour les dots
+    dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
 }
 
 // ============================================

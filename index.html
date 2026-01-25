@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marco Bosson - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS\style.css">
 </head>
+<script src="js/script.js"></script>
 <body>
-    <script src="js/script.js"></script>
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
@@ -42,24 +42,28 @@
             </p>
         </div>
 
-        <h3 class="section-title">Mes compétences</h3>
+        <h3 class="section-title">Mes compétences actuelles</h3>
         <div class="skills-grid" id="skills-container"></div>
 
         <div class="cards-grid">
-            <div class="main-card" onclick="showPage('completed')">
-                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=400&fit=crop" 
-                     alt="Projets terminés" 
-                     class="main-card-image"
-                     onerror="this.style.display='none'">
+            <div class="main-card" onclick="showPage('completed')" onmouseenter="startCarousel('completed')" onmouseleave="stopCarousel('completed')">
+                <div class="main-card-images-container" id="completed-carousel">
+                    <!-- Les images seront insérées ici par JavaScript -->
+                </div>
+                <div class="card-header">
+                    <div class="card-icon">➜</div>
+                </div>
                 <div class="card-title">Projets Terminés</div>
                 <div class="card-count" id="completed-count">0</div>
             </div>
 
-            <div class="main-card green" onclick="showPage('ongoing')">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop" 
-                     alt="Projets en cours" 
-                     class="main-card-image"
-                     onerror="this.style.display='none'">
+            <div class="main-card green" onclick="showPage('ongoing')" onmouseenter="startCarousel('ongoing')" onmouseleave="stopCarousel('ongoing')">
+                <div class="main-card-images-container" id="ongoing-carousel">
+                    <!-- Les images seront insérées ici par JavaScript -->
+                </div>
+                <div class="card-header">
+                    <div class="card-icon">➜</div>
+                </div>
                 <div class="card-title">Projets En Cours</div>
                 <div class="card-count" id="ongoing-count">0</div>
             </div>
@@ -101,30 +105,35 @@
             <span>←</span>
             <span>Retour à l'accueil</span>
         </a>
-        <h2 class="section-title">Contactez-moi</h2>
+        <h2 class="section-title">Mes contacts</h2>
         <div class="contact-card">
             <div class="contact-header">
                 <h3>Restons en contact</h3>
+                <p>N'hésitez pas à me contacter pour toute collaboration</p>
             </div>
             <div class="contact-item">
+                <div class="contact-icon">📧</div>
                 <div class="contact-info">
                     <h3>Email</h3>
                     <a href="mailto:marcobosson@mailo.com">marcobosson@mailo.com</a>
                 </div>
             </div>
             <div class="contact-item">
+                <div class="contact-icon">📱</div>
                 <div class="contact-info">
                     <h3>Téléphone</h3>
                     <a href="tel:+33644290007">+33 6 44 29 00 07</a>
                 </div>
             </div>
             <div class="contact-item">
+                <div class="contact-icon">💼</div>
                 <div class="contact-info">
                     <h3>LinkedIn</h3>
                     <a href="https://linkedin.com/in/marco-bosson-1605b9394" target="_blank">linkedin.com/in/marco-bosson-1605b9394</a>
                 </div>
             </div>
             <div class="contact-item">
+                <div class="contact-icon">💻</div>
                 <div class="contact-info">
                     <h3>GitHub</h3>
                     <a href="https://github.com/BOSSONMarco" target="_blank">github.com/BOSSONMarco</a>
